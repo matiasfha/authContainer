@@ -1,22 +1,21 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
-import { memoize } from 'lodash/fp'
 
 const defaults = {
-	authSelector: memoize((authData) => {
+	authSelector: (authData) => {
 		if (Immutable.Map.isMap(authData)) {
 			return authData.get('authenticated')
 		}
 		return authData.authenticated
-	}),
+	},
 	redirectOnFailure: '/login',
 }
 
 export const AuthContainer = (args) => {
 	const { authSelector, redirectOnFailure } = { ...defaults, ...args }
 
-	const isAuthenticated = memoize((state) => authSelector(state))
+	const isAuthenticated = (state) => authSelector(state)
 
 	const checkAuth = (state, router) => {
 		if (!isAuthenticated(state)) {
@@ -30,8 +29,12 @@ export const AuthContainer = (args) => {
 
 	const composed = (ComposedComponent) => {
 		function mapStateToProps(state) {
-			return { user: state.get('user') }
+			if (Immutable.Map.isMap(state)) {
+				return { user: state.get('user') }
+			}
+			return { user: state.user }
 		}
+
 		@connect(mapStateToProps)
 		class Composed extends Component {
 			static propTypes = {
@@ -59,5 +62,17 @@ export const AuthContainer = (args) => {
 		return Composed
 	}
 
+	composed.onEnter = (store, nextState, replace) => {
+		const state = store.getState()
+		let user
+		if (Immutable.Map.isMap(state)) {
+			user = state.get('user')
+		} else {
+			user = state.user
+		}
+
+		const authData = authSelector(user)
+		checkAuth(authData, { replace: replace })
+	}
 	return composed
 }
