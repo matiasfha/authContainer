@@ -1,3 +1,7 @@
+[![Coverage Status](https://coveralls.io/repos/github/msdark/authContainer/badge.svg?branch=master)](https://coveralls.io/github/msdark/authContainer?branch=master)
+
+[![Build Status](https://travis-ci.org/msdark/authContainer.svg?branch=master)](https://travis-ci.org/msdark/authContainer)
+
 # authContainer
 React High Order Component to add authentication to Redux app
 
