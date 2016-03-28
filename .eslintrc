@@ -1,0 +1,51 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "mocha": true
+    },
+    "extends": "eslint-config-airbnb",
+    "parser":"babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-props"
+    ],
+    "globals": {
+      "__PRODUCTION__": true,
+      "__DEVTOOLS__": true
+    },
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "max-len": [1, 100, 2],
+        "camelcase": [0],
+        "react/jsx-closing-bracket-location": [1],
+        "react/jsx-no-bind": [1],
+        "arrow-body-style": [1, "as-needed"],
+        "react/no-multi-comp": [1,{ "ignoreStateless": true}],
+        "react/prefer-es6-class": [1,"always"],
+        "new-cap": [0]
+    }
+}
