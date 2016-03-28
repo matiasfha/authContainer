@@ -1,6 +1,6 @@
 {
   "name": "hoc-auth-component",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React High Order Component to manage authentication using Redux",
   "main": "lib/index.js",
   "scripts": {
@@ -35,22 +35,21 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
-    "enzyme": "^2.2.0",
     "eslint": "^2.5.1",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-react": "^4.2.3",
     "eslint-plugin-react-props": "0.0.3",
     "jsdom": "^8.2.0",
     "mocha": "^2.4.5",
-    "react": "^0.14.7",
+    "babel-istanbul": "^0.7.0"
+  },
+  "dependencies": {
+    "immutable": "^3.7.6",
+		"react": "^0.14.7",
     "react-addons-test-utils": "^0.14.7",
     "react-redux": "^4.4.1",
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1"
-  },
-  "dependencies": {
-    "babel-istanbul": "^0.7.0",
-    "immutable": "^3.7.6"
   }
 }
