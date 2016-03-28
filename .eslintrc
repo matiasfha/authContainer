@@ -6,7 +6,7 @@
         "mocha": true
     },
     "extends": "eslint-config-airbnb",
-    "parser":"babel-eslint",
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -16,13 +16,16 @@
     },
     "plugins": [
         "react",
-        "react-props"
+        "react-props",
+        "flow-vars"
     ],
     "globals": {
       "__PRODUCTION__": true,
       "__DEVTOOLS__": true
     },
     "rules": {
+        "flow-vars/define-flow-type": 1,
+        "flow-vars/use-flow-type": 1,
         "indent": [
             "error",
             "tab"

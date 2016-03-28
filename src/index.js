@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Immutable from 'immutable'
 
 const defaults = {
-	authSelector: (authData) => {
+	authSelector: (authData: Object): boolean => {
 		if (Immutable.Map.isMap(authData)) {
 			return authData.get('authenticated')
 		}
@@ -12,12 +12,12 @@ const defaults = {
 	redirectOnFailure: '/login',
 }
 
-export const AuthContainer = (args) => {
+export const AuthContainer = (args: Object): Function => {
 	const { authSelector, redirectOnFailure } = { ...defaults, ...args }
 
-	const isAuthenticated = (state) => authSelector(state)
+	const isAuthenticated = (state: Object): boolean => authSelector(state)
 
-	const checkAuth = (state, router) => {
+	const checkAuth = (state: Object, router: Object) => {
 		if (!isAuthenticated(state)) {
 			router.replace({
 				pathname: redirectOnFailure,
@@ -27,8 +27,8 @@ export const AuthContainer = (args) => {
 		}
 	}
 
-	const composed = (ComposedComponent) => {
-		function mapStateToProps(state) {
+	const composed = (ComposedComponent: React.Component): React.Component => {
+		function mapStateToProps(state: Object): Object {
 			if (Immutable.Map.isMap(state)) {
 				return { user: state.get('user') }
 			}
@@ -62,7 +62,7 @@ export const AuthContainer = (args) => {
 		return Composed
 	}
 
-	composed.onEnter = (store, nextState, replace) => {
+	composed.onEnter = (store: Object, nextState: Object, replace: Object) => {
 		const state = store.getState()
 		let user
 		if (Immutable.Map.isMap(state)) {
@@ -72,7 +72,7 @@ export const AuthContainer = (args) => {
 		}
 
 		const authData = authSelector(user)
-		checkAuth(authData, { replace: replace })
+		checkAuth(authData, { replace })
 	}
 	return composed
 }
