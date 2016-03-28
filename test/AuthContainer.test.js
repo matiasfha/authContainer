@@ -95,7 +95,6 @@ describe('AuthContainer', () => {
 	})
 
 	it('provides onEnter static function', () => {
-		let store
 		const connect = (fn) => (nextState, replaceState) => fn(store, nextState, replaceState)
 
 		const routesOnEnter = (
@@ -105,7 +104,7 @@ describe('AuthContainer', () => {
 			</Route>
 		)
 		const { history, store: createdStore } = setupTest(routesOnEnter)
-		store = createdStore
+		const store = createdStore
 		expect(store.getState().routing.locationBeforeTransitions.pathname).to.equal('/')
 		history.push('/onEnter')
 		expect(store.getState().routing.locationBeforeTransitions.pathname).to.equal('/login')
