@@ -8,7 +8,8 @@
     "build": "mkdir -p lib && babel ./src/index.js --out-file ./lib/index.js",
     "lint": "eslint src test",
     "prepublish": "rm -rf lib && npm run build",
-    "test:cov": "babel-node $(npm bin)/babel-istanbul cover $(npm bin)/_mocha -- --require test/index.js test/**/*.test.js"
+    "test:cov": "babel-node $(npm bin)/babel-istanbul cover $(npm bin)/_mocha -- --require test/index.js test/**/*.test.js",
+		"documentation": "npm build && mkdir -p documentation && documentation lib/index.js -f html -o documentation/"
   },
   "keywords": [
     "HOC",
@@ -19,6 +20,10 @@
     "React",
     "Redux"
   ],
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/msdark/authContainer.git"
+  },
   "author": "Matias Hernandez <matiasfh@gmail.com>",
   "license": "MIT",
   "devDependencies": {
