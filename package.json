@@ -1,6 +1,6 @@
 {
   "name": "hoc-auth-component",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "A React High Order Component to manage authentication using Redux",
   "main": "lib/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "eslint src test",
     "prepublish": "rm -rf lib && npm run build",
     "test:cov": "babel-node $(npm bin)/babel-istanbul cover $(npm bin)/_mocha -- --require test/index.js test/**/*.test.js",
-		"documentation": "npm build && mkdir -p documentation && documentation lib/index.js -f html -o documentation/"
+    "documentation": "npm build && mkdir -p documentation && documentation lib/index.js -f html -o documentation/"
   },
   "keywords": [
     "HOC",
@@ -20,7 +20,7 @@
     "React",
     "Redux"
   ],
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/msdark/authContainer.git"
   },
