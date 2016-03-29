@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive --require test/index.js test/**/*.test.js",
     "build": "mkdir -p lib && babel ./src/index.js --out-file ./lib/index.js",
+    "install": "npm run build",
     "lint": "eslint src test",
     "prepublish": "rm -rf lib && npm run build",
     "test:cov": "babel-node $(npm bin)/babel-istanbul cover $(npm bin)/_mocha -- --require test/index.js test/**/*.test.js",
